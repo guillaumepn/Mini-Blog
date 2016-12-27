@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Accueil</title>
-    </head>
-    <body>
 
-    </body>
-</html>
+<?php include "header.php"; ?>
+<nav>
+	<h1>Mini-blog</h1>
+</nav>
+<section>
+	
+
+</section>
+
+
+<?php include "footer.php"; ?>
