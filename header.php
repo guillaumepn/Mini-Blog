@@ -1,3 +1,8 @@
+<?php
+session_start();
+$bdd = new PDO('mysql:host=localhost;dbname=mini_blog;charset=utf8', 'root', '');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
