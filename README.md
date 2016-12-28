@@ -8,6 +8,7 @@ Tâches à attribuer :
 Douae : 
 * Afficher le contenu (titre, content, date) d'un article sur la page article.php
 * Interface d'admin : poster un nouvel article / éditer un article existant / le supprimer
+
 Sylvain :
 
 Guillaume :
