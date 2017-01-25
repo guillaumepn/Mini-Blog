@@ -17,7 +17,7 @@ class Authentification
         echo "Ce pseudo est déjà utilisé par un de nos utilisateurs";
       }else{
         if($_POST['password'] == $_POST['passwordVerification']){
-          $passwordencrypted = password_hash($_POST['password'], PASSWORD_DEFAULT));
+          $passwordencrypted = password_hash($_POST['password'], PASSWORD_DEFAULT);
           $statement = $bdd->prepare("INSERT INTO `mb_users`(`username`, `password`, `admin`) VALUES (:pseudo,:password,:admin)");
           $statement->execute(array(':pseudo' => $_POST['pseudo'] , ':password' => $passwordencrypted, ':admin' => '0'));
           $statement->fetchAll();
