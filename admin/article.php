@@ -26,7 +26,8 @@
  
          <tbody>
          <?php
-         while($row=$res->fetch(PDO::FETCH_OBJ)) {?>
+         $req = $bdd->query('select * from mb_article order by id_article desc limit 10');
+         while($row=$req->fetch(PDO::FETCH_OBJ)) {?>
          <tr align="center">
              <td><?= $row->title ?></td>
              <td><?= $row->content ?></td>
