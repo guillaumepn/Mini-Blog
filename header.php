@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 $user="root";
 $pass="";
@@ -12,6 +12,9 @@ $res = $db->query("SELECT * FROM mb_article WHERE status='1'", PDO::FETCH_ASSOC)
 <head>
 	<meta charset="UTF-8">
 	<title>Mini-Blog</title>
+
+
+
 	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
      <script type="text/javascript">
 tinymce.init({
@@ -39,5 +42,9 @@ tinymce.init({
         ]
 });</script>
 
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 </head>
 <body>

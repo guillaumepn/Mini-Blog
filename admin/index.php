@@ -1,3 +1,4 @@
+
 <?php include "../header.php"; ?>
 <nav>
   <h1>Mini-Blog</h1>

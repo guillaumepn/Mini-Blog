@@ -11,7 +11,7 @@
             </thead>
             <tbody> <?php $refererUrl = $_SERVER['HTTP_REFERER'];
             $Exploded_URL = explode("/",$refererUrl);
-$urlToCheck = $Exploded_URL[6];
+$urlToCheck = $Exploded_URL[6];//A modifier selon votre URL
 
 if($urlToCheck == 'article.php'){
 ?> <p> Liste des articles </p>

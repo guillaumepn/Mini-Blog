@@ -14,6 +14,4 @@
     </form>
     <a class="lien fade" href="../article.php"><button type="button" class='btn'>Retour à la gestion des articles</button></a>
 </div>
-<?php
 
-?>

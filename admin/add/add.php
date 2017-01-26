@@ -1,5 +1,4 @@
 <p>
     <?php include "../../header.php";?><?php
-print_r($_POST);
-
+s
 ?></p>

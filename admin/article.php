@@ -31,6 +31,7 @@
              <td><?= $row->title ?></td>
              <td><?= $row->content ?></td>
              <td>
+
                  <?php
                  if($row->status==0):
                      ?>
