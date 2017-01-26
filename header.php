@@ -42,9 +42,5 @@ tinymce.init({
         ]
 });</script>
 
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 </head>
 <body>
