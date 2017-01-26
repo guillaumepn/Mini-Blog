@@ -5,9 +5,13 @@
 </nav>
 <section>
 	<a class="lien fade" href="index.php"><button type="button" class='btn'>Accueil</button></a><br>
-	<?php 
-	$id=$_POST['id'];
-	$res = $db->prepare("SELECT * FROM mb_article WHERE id_article='".$id."'");
+	<?php
+    $refererUrl = $_SERVER['REQUEST_URI'];
+    $Exploded_URL = explode("/",$refererUrl);
+    $urlToCheck = explode("=",$Exploded_URL[3]);
+
+	$id=$urlToCheck[1];
+	$res = $bdd->prepare("SELECT * FROM mb_article WHERE id_article='".$id."'");
     $res->execute();
     $result = $res->fetch(PDO::FETCH_OBJ);
 
