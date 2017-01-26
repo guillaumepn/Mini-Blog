@@ -21,8 +21,6 @@ require_once("classAuthentification.php")
                 echo "<p><a href=\"article.php?id=".$article['id_article']."\">".$article['title']."</a></p>";
             }
         }
-
-				var_dump($_SESSION['connected']);
      ?>
 </section>
 
