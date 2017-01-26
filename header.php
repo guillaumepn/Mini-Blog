@@ -1,10 +1,7 @@
 <?php
 session_start();
-$user="root";
-$pass="";
-$db = new PDO('mysql:host=localhost;dbname=mini_blog;', $user, $pass);
-$res = $db->query("SELECT * FROM mb_article WHERE status='1'", PDO::FETCH_ASSOC);
 
+$bdd = new PDO('mysql:host=localhost;dbname=mini_blog;charset=utf8', 'root', '');
 ?>
 
 <!DOCTYPE html>
