@@ -15,6 +15,28 @@ $urlToCheck = $Exploded_URL[6];//A modifier selon votre URL
 
 if($urlToCheck == 'article.php'){
 ?> <p> Liste des articles </p>
+    <?php $req = $bdd->query('select * from mb_article where status = -1');
+    while($row=$req->fetch(PDO::FETCH_OBJ)) {?>
+        <tr align="center">
+             <td><?= $row->title ?></td>
+        <td><?php
+            if($row->status==-1):
+                ?>
+
+                <form action="updateStatus.php" method="post" style="display: inline-block">
+                    <input type="hidden" name="id_article" value="<?= $row->id_article ?>">
+                    <input type="hidden" name="status" value="<?= $row->status ?>">
+                    <button type="submit" name ="toto" id="toto" onClick="if (!confirm('Voulez vous mettre en ligne cette article : <?= $row->title ?> ?')) return false;"><h5>Mettre en ligne</h5></button>
+                </form>
+
+                <?php
+            endif;
+            ?>
+        </td>
+
+        </tr>
+        <?php
+         }  ?>
 <?php } elseif ($urlToCheck == 'comments.php'){
 ?> <p> Liste des commentaires </p><?php
 }else{ echo "Error 404";}

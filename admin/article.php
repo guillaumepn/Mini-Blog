@@ -26,7 +26,7 @@
  
          <tbody>
          <?php
-         $req = $bdd->query('select * from mb_article order by id_article desc limit 10');
+         $req = $bdd->query('select * from mb_article order by id_article');
          while($row=$req->fetch(PDO::FETCH_OBJ)) {?>
          <tr align="center">
              <td><?= $row->title ?></td>
@@ -34,19 +34,20 @@
              <td>
 
                  <?php
-                 if($row->status==0):
+                 if($row->status==-1):
                      ?>
-                     <form action="/<?= SITE_URL ?>admin/article/status" method="post" style="display: inline-block">
+                     <form action="updateStatus.php" method="post" style="display: inline-block">
                          <input type="hidden" name="id_article" value="<?= $row->id_article ?>">
-                         <button type="submit" class="btn" onclick="if (!confirm('Voulez vous mettre en ligne le document <?= $row->name ?>')) return false;">Mettre en ligne</button>
+                         <input type="hidden" name="status" value="<?= $row->status ?>">
+                         <button type="submit" name ="toto" id="toto" onClick="if (!confirm('Voulez vous mettre en ligne cette article : <?= $row->title ?> ?')) return false;"><h5>Mettre en ligne</h5></button>
                      </form>
                      <?php
                  elseif($row->status==1):
                      ?>
-                     <form action="/<?= SITE_URL ?>admin/article/offline" method="post" style="display: inline-block">
+                     <form action="updateStatus.php" method="post" style="display: inline-block">
                          <input type="hidden" name="id_article" value="<?= $row->id_article ?>">
-                         <button type="submit" class="btn" onclick="if (!confirm('Voulez vous désactiver le document <?= $row->name ?>')) return false;">désactiver</button>
-                     </form>
+                         <input type="hidden" name="status" value="<?= $row->status ?>">
+                         <button type="submit" name ="toto" id="toto" onClick="if (!confirm('Voulez vous supprimer cette article : <?= $row->title ?> ?')) return false;"><h5>Supprimer</h5></button>                     </form>
                      <?php
                  endif;
                  ?>
@@ -56,10 +57,7 @@
                      <input type="hidden" name="id_article" value="<?= $c->id_article ?>">
                      <button type="submit" class="btn">Editer</button>
                  </form>
-                 <form action="delete/article.php" method="POST" style="display: inline-block;">
-                     <input type="hidden" name="id_article" value="<?= $c->id_article ?>">
-                     <button type="submit" class="btn"  onclick="if (!confirm('Voulez vous supprimer le document <?= $c->name ?>')) return false;">Supprimer</button>
-                 </form>
+
              </td>
          </tr>
              <?php
