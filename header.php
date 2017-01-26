@@ -6,6 +6,7 @@ $db = new PDO('mysql:host=localhost;dbname=mini_blog;', $user, $pass);
 $res = $db->query("SELECT * FROM mb_article WHERE status='1'", PDO::FETCH_ASSOC);
 
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
