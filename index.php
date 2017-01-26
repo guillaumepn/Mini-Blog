@@ -6,6 +6,7 @@ require_once("classAuthentification.php")
 	<h1>Mini-blog</h1>
 </nav>
 <section>
+
 	<h2>Liste des articles</h2>
     <?php
 				$auth = new Authentification();
