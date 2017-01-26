@@ -62,4 +62,13 @@ class Authentification
     </form>
     <?php
   }
+
+  public function isConnected(){
+    if($_SESSION['connected']){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 }
