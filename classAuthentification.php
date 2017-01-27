@@ -73,37 +73,31 @@ class Authentification
     }
   }
 
-  public function isAdmin(){
-    if(isConnected()){
+  public function isAdmin($userId){
+    $bdd = new PDO('mysql:host=localhost;dbname=mini_blog;charset=utf8', 'root', '');
+    $statement = $bdd->prepare("SELECT admin FROM mb_users WHERE id = :id");
+    $statement->execute(array(':id' => $userId));
+    $adminParam = $statement->fetchAll();
 
-        $bdd = new PDO('mysql:host=localhost;dbname=mini_blog;charset=utf8', 'root', '');
-        $statement = $bdd->prepare("SELECT admin FROM mb_users WHERE username = :username");
-        $statement->execute(array(':username' => $_Session['pseudo']));
-        $adminParam = $statement->fetchAll();
-
-        if($adminParam[0][0]=="1"){
-          return true;
-        }
-        else{
-          return false;
-        }
+    if($adminParam[0][0]=="1"){
+      return true;
+    }
+    else{
+      return false;
     }
   }
 
-  public function isBanned(){
-    if(isConnected()){
+  public function isBanned($userId){
+    $bdd = new PDO('mysql:host=localhost;dbname=mini_blog;charset=utf8', 'root', '');
+    $statement = $bdd->prepare("SELECT admin FROM mb_users WHERE id = :id");
+    $statement->execute(array(':id' => $userId));
+    $adminParam = $statement->fetchAll();
 
-        $bdd = new PDO('mysql:host=localhost;dbname=mini_blog;charset=utf8', 'root', '');
-        $statement = $bdd->prepare("SELECT admin FROM mb_users WHERE username = :username");
-        $statement->execute(array(':username' => $_Session['pseudo']));
-        $adminParam = $statement->fetchAll();
-
-        if($adminParam[0][0]=="-1"){
-          return true;
-        }
-        else{
-          return false;
-        }
+    if($adminParam[0][0]=="-1"){
+      return true;
+    }
+    else{
+      return false;
     }
   }
 
