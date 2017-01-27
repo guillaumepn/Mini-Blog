@@ -2,15 +2,14 @@
 
 Tâches à attribuer :
 
-* Système d'inscription / connexion (pseudo, mdp) 
-* Design CSS du blog et de l'interface admin
-
 Douae : 
 * Afficher le contenu (titre, content, date) d'un article sur la page article.php
 * Interface d'admin : poster un nouvel article / éditer un article existant / le supprimer
 * Interface d'archives des commentaires et articles supprimés
 
 Sylvain :
+* Système d'inscription / connexion (pseudo, mdp)
+* Design CSS du blog / interface admin
 
 Guillaume :
 * Lister les articles sur la page d'accueil
