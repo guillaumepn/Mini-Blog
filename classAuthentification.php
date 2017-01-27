@@ -65,7 +65,7 @@ class Authentification
   }
 
   public function isConnected(){
-    if(isset($_SESSION['connected'])){
+    if(isset($_SESSION['connected']) && $_SESSION['connected'] == true){
       return true;
     }
     else{
