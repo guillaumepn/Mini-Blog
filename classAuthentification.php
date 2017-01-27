@@ -41,7 +41,7 @@ class Authentification
 
   public function connection(){
 
-    if($_SESSION['connected'] == true){return 0;}
+    if($this->isConnected()){return 0;}
     if(isset($_POST['co_pseudo']) && $_POST['co_pseudo']!=""){
       $bdd = new PDO('mysql:host=localhost;dbname=mini_blog;charset=utf8', 'root', '');
       $statement = $bdd->prepare("SELECT username, password FROM mb_users WHERE username = :username");
@@ -65,7 +65,7 @@ class Authentification
   }
 
   public function isConnected(){
-    if($_SESSION['connected']){
+    if(isset($_SESSION['connected'])){
       return true;
     }
     else{
