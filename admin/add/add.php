@@ -1,4 +1,4 @@
 <p>
     <?php include "../../header.php";?><?php
-s
+    echo $_POST['content'];
 ?></p>
