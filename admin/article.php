@@ -27,30 +27,18 @@
          <tbody>
          <?php
          $req = $bdd->query('select * from mb_article order by id_article');
-         while($row=$req->fetch(PDO::FETCH_OBJ)) {?>
+         while($row=$req->fetch(PDO::FETCH_OBJ)) {
+             if($row->status==1):?>
          <tr align="center">
              <td><?= $row->title ?></td>
              <td><?= $row->content ?></td>
              <td>
 
-                 <?php
-                 if($row->status==-1):
-                     ?>
-                     <form action="updateStatus.php" method="post" style="display: inline-block">
-                         <input type="hidden" name="id_article" value="<?= $row->id_article ?>">
-                         <input type="hidden" name="status" value="<?= $row->status ?>">
-                         <button type="submit" name ="toto" id="toto" onClick="if (!confirm('Voulez vous mettre en ligne cette article : <?= $row->title ?> ?')) return false;"><h5>Mettre en ligne</h5></button>
-                     </form>
-                     <?php
-                 elseif($row->status==1):
-                     ?>
                      <form action="updateStatus.php" method="post" style="display: inline-block">
                          <input type="hidden" name="id_article" value="<?= $row->id_article ?>">
                          <input type="hidden" name="status" value="<?= $row->status ?>">
                          <button type="submit" name ="toto" id="toto" onClick="if (!confirm('Voulez vous supprimer cette article : <?= $row->title ?> ?')) return false;"><h5>Supprimer</h5></button>                     </form>
-                     <?php
-                 endif;
-                 ?>
+
              </td>
              <td>
                  <form action="edit/article.php" method="POST" style="display: inline-block;">
@@ -61,6 +49,7 @@
              </td>
          </tr>
              <?php
+             endif;
          }  ?>
          </tbody>
       </table>
