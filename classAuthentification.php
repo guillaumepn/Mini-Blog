@@ -38,4 +38,66 @@ class Authentification
     <?php
 
   }
+
+  public function connection(){
+
+    if($_SESSION['connected'] == true){return 0;}
+    if(isset($_POST['co_pseudo']) && $_POST['co_pseudo']!=""){
+      $bdd = new PDO('mysql:host=localhost;dbname=mini_blog;charset=utf8', 'root', '');
+      $statement = $bdd->prepare("SELECT username, password FROM mb_users WHERE username = :username");
+      $statement->execute(array(':username' => $_POST['co_pseudo'] ));
+      $userSpec = $statement->fetchAll();
+      if(password_verify($_POST['co_password'], $userSpec[0]['password'])){
+        echo "<h1>C'est la fête</h1>";
+        $_SESSION['connected'] = true;
+        $_Session['pseudo'] = $_POST['co_pseudo'];
+        return 0;
+      }
+    }
+
+    ?>
+    <form class="" action="index.php" method="post">
+      <input type="text" name="co_pseudo" pattern="[A-Za-z0-9]{2-15}" required="true" value="" placeholder="Pseudo">
+      <input type="password" pattern="[A-Za-z0-9]{8-*}" name="co_password" required="true" value="" placeholder="Password">
+      <input type="submit" name="submit" >
+    </form>
+    <?php
+  }
+
+  public function isConnected(){
+    if($_SESSION['connected']){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  public function isAdmin($userId){
+    $bdd = new PDO('mysql:host=localhost;dbname=mini_blog;charset=utf8', 'root', '');
+    $statement = $bdd->prepare("SELECT admin FROM mb_users WHERE id = :id");
+    $statement->execute(array(':id' => $userId));
+    $adminParam = $statement->fetchAll();
+
+    if($adminParam[0][0]=="1"){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  public function isBanned($userId){
+    $bdd = new PDO('mysql:host=localhost;dbname=mini_blog;charset=utf8', 'root', '');
+    $statement = $bdd->prepare("SELECT admin FROM mb_users WHERE id = :id");
+    $statement->execute(array(':id' => $userId));
+    $adminParam = $statement->fetchAll();
+
+    if($adminParam[0][0]=="-1"){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 }
