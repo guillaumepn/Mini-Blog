@@ -42,7 +42,7 @@
              </td>
              <td>
                  <form action="edit/article.php" method="POST" style="display: inline-block;">
-                     <input type="hidden" name="id_article" value="<?= $c->id_article ?>">
+                     <input type="hidden" name="id_article" value="<?= $row->id_article ?>">
                      <button type="submit" class="btn">Editer</button>
                  </form>
 
