@@ -50,6 +50,7 @@ class Authentification
       if(password_verify($_POST['co_password'], $userSpec[0]['password'])){
         echo "<h1>C'est la fête</h1>";
         $_SESSION['connected'] = true;
+        $_Session['pseudo'] = $_POST['co_pseudo'];
         return 0;
       }
     }
@@ -71,4 +72,39 @@ class Authentification
       return false;
     }
   }
+
+  public function isAdmin(){
+    if(isConnected()){
+
+        $bdd = new PDO('mysql:host=localhost;dbname=mini_blog;charset=utf8', 'root', '');
+        $statement = $bdd->prepare("SELECT admin FROM mb_users WHERE username = :username");
+        $statement->execute(array(':username' => $_Session['pseudo']));
+        $adminParam = $statement->fetchAll();
+
+        if($adminParam[0][0]=="1"){
+          return true;
+        }
+        else{
+          return false;
+        }
+    }
+  }
+
+  public function isBanned(){
+    if(isConnected()){
+
+        $bdd = new PDO('mysql:host=localhost;dbname=mini_blog;charset=utf8', 'root', '');
+        $statement = $bdd->prepare("SELECT admin FROM mb_users WHERE username = :username");
+        $statement->execute(array(':username' => $_Session['pseudo']));
+        $adminParam = $statement->fetchAll();
+
+        if($adminParam[0][0]=="-1"){
+          return true;
+        }
+        else{
+          return false;
+        }
+    }
+  }
+
 }
