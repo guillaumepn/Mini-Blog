@@ -36,11 +36,16 @@
 	} else {
 		foreach ($coms as $com) {
 			// Récupérer les infos de l'auteur du commentaire
-			$res = $bdd->prepare("SELECT * FROM mb_users WHERE id_user = :id_user");
-			$res->execute(array(':id_user' => $com->fk_id_user));
-			$user = $res->fetch(PDO::FETCH_OBJ);
-			// Afficher le commentaire
-			echo "<strong>".$user->username." a dit</strong> <i>(le ".$com->date.")</i>:<br>".$com->content."<br><br>";
+			// -1 : user non connecté => on affiche "Anonyme"
+			if ($com->fk_id_user != -1) {
+				$res = $bdd->prepare("SELECT * FROM mb_users WHERE id_user = :id_user");
+				$res->execute(array(':id_user' => $com->fk_id_user));
+				$user = $res->fetch(PDO::FETCH_OBJ);
+				// Afficher le commentaire
+				echo "<strong>".$user->username." a dit</strong> <i>(le ".$com->date.")</i>:".$com->content."<br>";
+			} else {
+				echo "<strong>Anonyme a dit</strong> <i>(le ".$com->date.")</i>:".$com->content."<br>";
+			}
 		}
 	}
 	 ?>
@@ -48,6 +53,7 @@
 	<h3>Poster un commentaire</h3>
 	<form class="" action="comment.php" method="post">
 		<textarea name="content" rows="8" cols="80"></textarea>
+		<input type="hidden" name="idArticle" value="<?php echo $id; ?>">
 		<input type="submit" name="submit" value="Envoyer">
 	</form>
 </section>

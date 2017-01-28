@@ -50,7 +50,7 @@ class Authentification
       if(password_verify($_POST['co_password'], $userSpec[0]['password'])){
         echo "<h1>C'est la fête</h1>";
         $_SESSION['connected'] = true;
-        $_Session['pseudo'] = $_POST['co_pseudo'];
+        $_SESSION['pseudo'] = $_POST['co_pseudo'];
         return 0;
       }
     }
