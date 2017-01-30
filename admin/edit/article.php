@@ -1,7 +1,6 @@
 <?php
 include "../../header.php";
 
-var_dump($_SESSION);
 $sql = $bdd->query("SELECT * FROM mb_article WHERE `id_article` = '" . $_POST['id_article'] . "'");
 while($row=$sql->fetch(PDO::FETCH_OBJ)) {
     ?>
@@ -17,7 +16,8 @@ while($row=$sql->fetch(PDO::FETCH_OBJ)) {
             <br>
             <label>Description :</label>
             <textarea  name="description" id="description" rows="20" cols="50"
-                       required="required" value=<?= $row->content;?>></textarea>
+                       required="required" ><?= $row->content;?></textarea>
+            <input type="hidden" name="id_article" value="<?= $row->id_article ?>">
             <button type="submit" name="save" id="save" value="submit">Sauvegarder</button>
 
         </form>
