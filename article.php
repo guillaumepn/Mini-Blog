@@ -7,20 +7,22 @@
     <section>
         <a class="lien fade" href="index.php"><button type="button" class='btn'>Accueil</button></a><br>
         <?php
-        $refererUrl = $_SERVER['REQUEST_URI'];
-        $Exploded_URL = explode("/",$refererUrl);
-        $urlToCheck = explode("=",$Exploded_URL[2]);
 
-        $id=$urlToCheck[1];
-        $res = $bdd->prepare("SELECT * FROM mb_article WHERE id_article = :id");
-        $res->execute(array(':id' => $id));
-        $result = $res->fetch(PDO::FETCH_OBJ);
+        $id=$_POST['id'];
+        $res = $bdd->query("SELECT * FROM mb_article WHERE id_article='".$id."'");
+        $res->execute();
+        $result = $res->fetch();
+        $id_auteur=$result['fk_id_user'];
+        $res1 = $bdd->query("SELECT username FROM mb_users WHERE id_user='".$id_auteur."'");
+        $res1->execute();
+        $result1 = $res1->fetch();
+       
         ?>
-        <H1><?php echo $result->title;?></H1>
-        <H6><?php echo $result->date;?></H6>
-        <p><?php echo $result->content;?></p>
-    </section>
+        <H1><?php echo $result['title'];?></H1>
+        <strong><?php echo "Posté par ".$result1['username']." le ".$result['date'];?></strong>
+        <p><?php echo $result['content'];?></p>
 
+    </section>
 
 <section>
 	<h2 id="article-coms">Commentaires</h2>
