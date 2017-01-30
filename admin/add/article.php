@@ -10,7 +10,7 @@
         <input type="text" id="title" name="title" placeholder="Entrez le titre de votre article"  required="required">
 <br>
         <label>Description :</label>
-        <textarea placeholder="Entrez ici votre description" name="description" id="description" rows="4" cols="50"  maxlength="100"  required="required"></textarea>
+        <textarea placeholder="Entrez ici votre description" name="description" id="description" rows="20" cols="50"  maxlength="100"  required="required"></textarea>
         <button type="submit" name="save" id="save" value="submit">Sauvegarder</button>
 
     </form>

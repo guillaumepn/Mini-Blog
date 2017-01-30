@@ -19,7 +19,12 @@
             echo "Aucun article.";
         } else {
             foreach ($req as $article) {
-                echo "<p><a href=\"article.php?id=".$article['id_article']."\">".$article['title']."</a></p>";
+
+                    echo '<form action="article.php" method="POST">';
+                    echo "<input type='hidden' name='id' value=".$article['id_article']."";
+                    echo "<a><button type='submit'>".$article['title']."</button></a></a>";
+                    echo "<br></form>";
+                //echo "<p><a href=\"article.php?id=".$article['id_article']."\">".$article['title']."</a></p>";
             }
         }
      ?>

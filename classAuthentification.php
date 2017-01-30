@@ -9,7 +9,7 @@ class Authentification
 
   function inscription(){
     if(isset($_POST['pseudo']) && $_POST['pseudo']!=""){
-      $bdd = new PDO('mysql:host=localhost;dbname=mini_blog;charset=utf8', 'root', 'root');
+      $bdd = new PDO('mysql:host=localhost;dbname=mini_blog;charset=utf8', 'root', '');
       $statement = $bdd->prepare("SELECT username FROM mb_users WHERE username = :username");
       $statement->execute(array(':username' => $_POST['pseudo'] ));
       $alreadyUsed = $statement->fetchAll();
