@@ -13,11 +13,13 @@
 
 	<h2>Liste des articles</h2>
     <?php
-
-        $req = $bdd->query('select * from mb_article where status = 1 order by id_article desc limit 10')->fetchAll();
-        if (count($req) == 0) {
+		// Articles
+        $req = $bdd->query("SELECT * FROM mb_article WHERE status = 1 ORDER BY id_article DESC");
+		$articles = $req->fetchAll(PDO::FETCH_OBJ);
+        if (!$articles) {
             echo "Aucun article.";
         } else {
+
             foreach ($req as $article) {
 
                     echo '<form action="article.php" method="POST">';
@@ -25,6 +27,7 @@
                     echo "<a><button type='submit'>".$article['title']."</button></a></a>";
                     echo "<br></form>";
                 //echo "<p><a href=\"article.php?id=".$article['id_article']."\">".$article['title']."</a></p>";
+
             }
         }
      ?>
