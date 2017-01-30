@@ -1,5 +1,6 @@
 <p>
     <?php include "../../header.php";?><?php
+
     $title= $_POST['title'];
     $description= $_POST['description'];
     $id_user= 1;
@@ -9,3 +10,4 @@
         $req = $bdd->query("INSERT INTO `mb_article`(`id_article`, `title`, `content`, `status`, `date`, `fk_id_user`) VALUES ('','" . $title . "','" . $description . "','" . $status . "','" . $date . "','" . $id_user . "')");
     }
     ?></p>
+

@@ -1,5 +1,6 @@
 <?php include "header.php";
 ?>
+
     <nav>
         <h1>Mini-blog</h1>
     </nav>
@@ -20,6 +21,43 @@
         <H6><?php echo $result->date;?></H6>
         <p><?php echo $result->content;?></p>
     </section>
+
+
+<section>
+	<h2>Commentaires</h2>
+	<!-- Listing des commentaires -->
+	<?php
+	// Récupérer les commentaires
+	$res = $bdd->prepare("SELECT * FROM mb_comments WHERE status = 1 AND fk_id_article = :id");
+	$res->execute(array(':id' => $id));
+	$coms = $res->fetchAll(PDO::FETCH_OBJ);
+
+	if (!$coms) {
+		echo "Aucun commentaire.";
+	} else {
+		foreach ($coms as $com) {
+			// Récupérer les infos de l'auteur du commentaire
+			// -1 : user non connecté => on affiche "Anonyme"
+			if ($com->fk_id_user != -1) {
+				$res = $bdd->prepare("SELECT * FROM mb_users WHERE id_user = :id_user");
+				$res->execute(array(':id_user' => $com->fk_id_user));
+				$user = $res->fetch(PDO::FETCH_OBJ);
+				// Afficher le commentaire
+				echo "<strong>".$user->username." a dit</strong> <i>(le ".$com->date.")</i>:".$com->content."<br>";
+			} else {
+				echo "<strong>Anonyme a dit</strong> <i>(le ".$com->date.")</i>:".$com->content."<br>";
+			}
+		}
+	}
+	 ?>
+	<!-- Formulaire du commentaire -->
+	<h3>Poster un commentaire</h3>
+	<form class="" action="comment.php" method="post">
+		<textarea name="content" rows="8" cols="80"></textarea>
+		<input type="hidden" name="idArticle" value="<?php echo $id; ?>">
+		<input type="submit" name="submit" value="Envoyer">
+	</form>
+</section>
 
 
 <?php include "footer.php"; ?>
