@@ -16,7 +16,7 @@
         $res1 = $bdd->query("SELECT username FROM mb_users WHERE id_user='".$id_auteur."'");
         $res1->execute();
         $result1 = $res1->fetch();
-
+       
         ?>
         <H1><?php echo $result['title'];?></H1>
         <strong><?php echo "Posté par ".$result1['username']." le ".$result['date'];?></strong>
@@ -25,7 +25,7 @@
     </section>
 
 <section>
-	<h2>Commentaires</h2>
+	<h2 id="article-coms">Commentaires</h2>
 	<!-- Listing des commentaires -->
 	<?php
 	// Récupérer les commentaires
