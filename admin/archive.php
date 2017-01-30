@@ -38,7 +38,32 @@ if($urlToCheck == 'article.php'){
         <?php
          }  ?>
 <?php } elseif ($urlToCheck == 'comments.php'){
-?> <p> Liste des commentaires </p><?php
+?> <p> Liste des commentaires </p>
+    <?php $req = $bdd->query('select * from mb_comments where status = -1');
+    while($row=$req->fetch(PDO::FETCH_OBJ)) {?>
+        <tr align="center">
+            <td><?= $row->content ?></td>
+            <td><?php
+                if($row->status==-1):
+                    ?>
+
+                    <form action="updateStatus.php" method="post" style="display: inline-block">
+                        <input type="hidden" name="id_comment" value="<?= $row->id_comment ?>">
+                        <input type="hidden" name="status" value="<?= $row->status ?>">
+                        <button type="submit" name ="toto" id="toto" onClick="if (!confirm('Voulez vous mettre en ligne ce commentaire ?')) return false;"><h5>Mettre en ligne</h5></button>
+                    </form>
+
+                    <?php
+                endif;
+                ?>
+            </td>
+
+        </tr>
+        <?php
+    }  ?>
+
+
+    <?php
 }else{ echo "Error 404";}
 ?>
             </tbody>

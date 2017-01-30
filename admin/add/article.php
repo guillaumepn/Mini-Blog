@@ -3,14 +3,16 @@
 <div class="section admin">
     <h2>Gestion des articles</h2>
 
-    <form method="POST" action="add.php">
+    <form action="add.php" method="post" novalidate>
 
-        <label for="title">Titre :</label>
-        <input type="text" id="title" name="title" placeholder="Entrez le titre de votre document">
+
+        <label>Titre :</label>
+        <input type="text" id="title" name="title" placeholder="Entrez le titre de votre article"  required="required">
 <br>
-        <label for="content">Description :</label>
-        <textarea placeholder="Entrez ici votre description" name="content" id="content" rows=4 cols=50  maxlength="100"></textarea>
-        <input type="submit" value="Sauvegarder">
+        <label>Description :</label>
+        <textarea placeholder="Entrez ici votre description" name="description" id="description" rows="4" cols="50"  maxlength="100"  required="required"></textarea>
+        <button type="submit" name="save" id="save" value="submit">Sauvegarder</button>
+
     </form>
-    <a class="lien fade" href="../article.php"><button type="button" class='btn'>Retour à la gestion des articles</button></a>
+    <a  href="../article.php"><button type="button" class='btn'>Retour à la gestion des articles</button></a>
 </div>
