@@ -16,6 +16,7 @@ if($_POST['id_article']){
             header('Location: index.php');
         }elseif(strpos($refererUrl,"article.php")){
         header('Location: article.php');
+
         }
     }
     else {
@@ -28,6 +29,7 @@ if($_POST['id_article']){
         $sql = $bdd->query("UPDATE mb_comments SET `status`= 1 WHERE `id_comment` = '" . $_POST['id_comment'] . "'");
     }
     $refererUrl = $_SERVER['HTTP_REFERER'];
+
 
     if(($sql)){
         if(strpos($refererUrl,"archive.php")){
@@ -52,6 +54,7 @@ if($_POST['id_article']){
             header('Location: index.php');
         }elseif(strpos($refererUrl,"user.php")){
             header('Location: user.php');
+
         }
     }
     else {
@@ -59,4 +62,3 @@ if($_POST['id_article']){
     }
 }
 ?>
-

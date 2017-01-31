@@ -14,6 +14,7 @@
 
 
 if(strpos($refererUrl,"article.php")){
+
 ?> <p> Liste des articles </p>
     <?php $req = $bdd->query('select * from mb_article where status = -1');
     while($row=$req->fetch(PDO::FETCH_OBJ)) {?>
@@ -37,8 +38,10 @@ if(strpos($refererUrl,"article.php")){
         </tr>
         <?php
          }  ?>
+
 <?php } elseif (strpos($refererUrl,"comments.php")){
     ?> <p> Liste des commentaires </p>
+
     <?php $req = $bdd->query('select * from mb_comments where status = -1');
     while($row=$req->fetch(PDO::FETCH_OBJ)) {?>
         <tr align="center">

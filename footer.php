@@ -1,12 +1,16 @@
 
 <footer>
 	<?php
-	$url = $_SERVER['REQUEST_URI'];
-	$urlTab = explode("/", $url);
+	$refererUrl = $_SERVER['HTTP_REFERER'];
+
+	if (!isset($auth)) $auth = new Authentification();
 	// Si on est déjà dans l'admin, on ne veut pas afficher ce lien dans le footer
-	if (isset($urlTab[2]) && $urlTab[2] != "admin") {
-		if (!isset($auth)) $auth = new Authentification();
-		if ($auth->isConnected()) {
+	if (!strpos($refererUrl, "admin") && $auth->isConnected()) {
+		$req = $bdd->prepare("SELECT * FROM mb_users WHERE username = :username");
+		$req->execute(array(':username' => $_SESSION['pseudo']));
+		$user = $req->fetch(PDO::FETCH_OBJ);
+		
+		if ($user->admin == 1) {
 			?>
 			<a href="admin/index.php">Administration</a>
 			<?php

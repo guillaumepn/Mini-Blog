@@ -7,22 +7,16 @@
     <section>
         <a class="lien fade" href="index.php"><button type="button" class='btn'>Accueil</button></a><br>
         <?php
-
-        $id=$_POST['id'];
-        $res = $bdd->query("SELECT * FROM mb_article WHERE id_article='".$id."'");
-        $res->execute();
-        $result = $res->fetch();
-        $id_auteur=$result['fk_id_user'];
-        $res1 = $bdd->query("SELECT username FROM mb_users WHERE id_user='".$id_auteur."'");
-        $res1->execute();
-        $result1 = $res1->fetch();
-       
+        $id = $_GET['id'];
+        $res = $bdd->prepare("SELECT * FROM mb_article WHERE id_article = :id");
+        $res->execute(array(':id' => $id));
+        $result = $res->fetch(PDO::FETCH_OBJ);
         ?>
-        <H1><?php echo $result['title'];?></H1>
-        <strong><?php echo "Posté par ".$result1['username']." le ".$result['date'];?></strong>
-        <p><?php echo $result['content'];?></p>
-
+        <H1><?php echo $result->title;?></H1>
+        <H6><?php echo $result->date;?></H6>
+        <p><?php echo $result->content;?></p>
     </section>
+
 
 <section>
 	<h2 id="article-coms">Commentaires</h2>
@@ -32,7 +26,6 @@
 	$res = $bdd->prepare("SELECT * FROM mb_comments WHERE status = 1 AND fk_id_article = :id");
 	$res->execute(array(':id' => $id));
 	$coms = $res->fetchAll(PDO::FETCH_OBJ);
-
 	if (!$coms) {
 		echo "Aucun commentaire.";
 	} else {
@@ -59,6 +52,5 @@
 		<input type="submit" name="submit" value="Envoyer">
 	</form>
 </section>
-
 
 <?php include "footer.php"; ?>
