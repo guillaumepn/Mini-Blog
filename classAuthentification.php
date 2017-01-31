@@ -10,13 +10,15 @@ class Authentification
   }
 
   function inscription(){
+    if($this->isConnected()){return 0;}
     if(isset($_POST['pseudo']) && $_POST['pseudo']!=""){
       $bdd = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PWD);
       $statement = $bdd->prepare("SELECT username FROM mb_users WHERE username = :username");
       $statement->execute(array(':username' => $_POST['pseudo'] ));
       $alreadyUsed = $statement->fetchAll();
       if(isset($alreadyUsed[0])){
-        echo "Ce pseudo est déjà utilisé par un de nos utilisateurs";
+        echo "<script>alert('Ce nom d'utilisateur est déjà utilisé.')</script>";
+        header("Refresh:0");
       }else{
         if($_POST['password'] == $_POST['passwordVerification']){
           $passwordencrypted = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -24,8 +26,8 @@ class Authentification
           $statement->execute(array(':pseudo' => $_POST['pseudo'] , ':password' => $passwordencrypted, ':admin' => '0'));
           $statement->fetchAll();
 
-          echo"<h1>Compte créé</h1>";
-          return 0;
+          echo "<script>alert('Votre compte a bien été créé, vous pouvez maintenant vous connecter.')</script>";
+          header("Refresh:0");
         }
       }
     }
@@ -43,17 +45,21 @@ class Authentification
 
   public function connection(){
 
-    if($this->isConnected()){return 0;}
     if(isset($_POST['co_pseudo']) && $_POST['co_pseudo']!=""){
       $bdd = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PWD);
       $statement = $bdd->prepare("SELECT username, password FROM mb_users WHERE username = :username");
       $statement->execute(array(':username' => $_POST['co_pseudo'] ));
       $userSpec = $statement->fetchAll();
-      if(password_verify($_POST['co_password'], $userSpec[0]['password'])){
-        echo "<h1>C'est la fête</h1>";
-        $_SESSION['connected'] = true;
-        $_SESSION['pseudo'] = $_POST['co_pseudo'];
-        return 0;
+      if(isset($userSpec[0]['password'])){
+        if(password_verify($_POST['co_password'], $userSpec[0]['password'])){
+          $_SESSION['connected'] = true;
+          $_SESSION['pseudo'] = $_POST['co_pseudo'];
+          echo "<script>alert('Vous etes maintenant connecte.)</script>";
+          header("Refresh:0");
+        }
+      }else{
+        echo "<script>alert('Impossible de se connecter, veuillez réessayer.')</script>";
+        header("Refresh:0");
       }
     }
 
