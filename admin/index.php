@@ -5,7 +5,7 @@
       <h6>Administration</h6>
 </div>
 <a href="../index.php">
-                   <button type="submit">Deconnexion</button>
+                   <button type="submit">Retour à l'accueil</button>
                 </a>
 <article id="admin_content">
    <div class="align_admin">
