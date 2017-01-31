@@ -12,7 +12,9 @@
 
 		if ($user->admin == 1) {
 			?>
-			<p><a href="admin/index.php">Administration</a></p>
+
+			<p><a href="./admin/index.php">Administration</a></p>
+
 			<?php
 		}
 	}
