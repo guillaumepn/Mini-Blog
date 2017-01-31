@@ -1,5 +1,13 @@
 # Mini-Blog
 
+Instructions de connexion sur le blog (avec la BDD mini_blog.sql) :
+* En tant qu'administrateur (accès au back-office) : 
+  * Login : admin
+  * Password : admin
+* En tant qu'utilisateur (back-office inaccessible) : 
+  * Login : user
+  * Password : user
+
 Tâches à attribuer :
 
 Douae : 
