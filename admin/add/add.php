@@ -12,6 +12,8 @@
     $status = 1;
     $date= (new DateTime())->format('Y-m-d');
     if(isset($title) && isset($description)) {
+
+
         $req = $bdd->prepare("INSERT INTO mb_article(title, content, status, date, fk_id_user) VALUES (:title, :description, :status, :date, :id_user)");
         $req->execute(array(
             ':title' => $title,
@@ -20,6 +22,9 @@
             ':date' => $date,
             ':id_user' => $user->id_user
         ));
+        if($req){
+            header('Location: ../article.php');
+        }
     }
     header('Location: ../article.php');
     ?></p>

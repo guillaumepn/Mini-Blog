@@ -16,16 +16,22 @@
           <ul>
              <li class="category">
                 <a href="comments.php">
-                   <img src='../public/chat.png' alt="">
+                   <img src='../public/image/chat.png' alt="">
                    <p>Commentaires</p>
                 </a>
              </li>
              <li class="category">
                 <a href="article.php">
-                   <img src='../public/pages.png' alt="">
+                   <img src='../public/image/pages.png' alt="">
                    <p>Articles</p>
                 </a>
              </li>
+              <li class="category">
+                  <a href="user.php">
+                      <img src='../public/image/account.png' alt="">
+                      <p>Utilisateurs</p>
+                  </a>
+              </li>
           </ul>
        </div>
      </section>
