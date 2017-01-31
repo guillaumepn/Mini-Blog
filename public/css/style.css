@@ -57,7 +57,32 @@ a {
     color: #2980b9;
     text-decoration: none;
 }
-  
+
+.form {
+    display: inline-block;
+    text-align: center;
+    width: 40%;
+}
+
+.form form {
+    display: inline-block;
+}
+
+.form.subscribe {
+    /*text-align: right;*/
+    margin-left: 10%;
+}
+
+.form.login {
+    /*text-align: left;*/
+
+}
+
+.form input, .form button {
+    display: block;
+    margin: 5px auto;
+}
+
 #page_title{
   font-size: 100px;
   color: #fff;
