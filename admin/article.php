@@ -1,8 +1,6 @@
 <?php include "../header.php"; ?>
-<nav>
-	<h1>Gestion Articles</h1>
-</nav>
-<section>
+
+<article>
 	<div class="section admin">
 
 
@@ -23,7 +21,7 @@
                 <td width="25%"><strong>Actions</strong></td>
             </tr>
          </thead>
- 
+
          <tbody>
          <?php
          $req = $bdd->query('select * from mb_article order by id_article');
@@ -59,7 +57,7 @@
 
 
 
-</section>
+</article>
 
 
 <?php include "../footer.php"; ?>
