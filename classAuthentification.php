@@ -56,6 +56,8 @@ class Authentification
           $_SESSION['pseudo'] = $_POST['co_pseudo'];
           echo "<script>alert('Vous etes maintenant connecte.)</script>";
           header("Refresh:0");
+        }else{
+          echo "<script>alert('Impossible de se connecter, veuillez réessayer.')</script>";
         }
       }else{
         echo "<script>alert('Impossible de se connecter, veuillez réessayer.')</script>";
