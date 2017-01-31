@@ -13,9 +13,10 @@ require_once("classAuthentification.php");
 <head>
 	<meta charset="UTF-8">
 	<title>Mini-Blog</title>
-	<link rel="stylesheet" href=<?php echo CSS_PATH; ?>>
+	<link rel="stylesheet" href=<?php echo CSS_PATH."style.css"; ?>>
+	<link rel="stylesheet" href=<?php echo CSS_PATH."font-awesome.min.css"; ?>>
 	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-     <script type="text/javascript">
+    <script type="text/javascript">
 tinymce.init({
         selector: "textarea",
         plugins: [
@@ -43,3 +44,9 @@ tinymce.init({
 
 </head>
 <body>
+
+<nav>
+	<h1>Mini-blog</h1>
+</nav>
+
+<section class="container">

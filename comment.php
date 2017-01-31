@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
     $content = trim($_POST['content']);
     $idArticle = $_POST['idArticle'];
     $idUser = (isset($_SESSION['pseudo'])) ? $user->id_user : -1;
-    $res = $bdd->prepare("INSERT INTO mb_comments (content, status, fk_id_article, fk_id_user) VALUES (:content, :status, :idArticle, :idUser)");
+    $res = $bdd->prepare("INSERT INTO mb_comments (content, status, date, fk_id_article, fk_id_user) VALUES (:content, :status, NOW(), :idArticle, :idUser)");
     $res->execute(array(
         ':content' => $content,
         ':status' => 1,

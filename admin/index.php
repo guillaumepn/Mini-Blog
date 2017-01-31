@@ -1,15 +1,13 @@
 
 <?php include "../header.php"; ?>
-<nav>
-  <h1>Mini-Blog</h1>
-</nav>
+
 <div id="page_title">
       <h6>Administration</h6>
 </div>
 <a href="../index.php">
                    <button type="submit">Deconnexion</button>
                 </a>
-<section id="admin_content">
+<article id="admin_content">
    <div class="align_admin">
           <ul>
              <li class="category">
@@ -32,7 +30,7 @@
               </li>
           </ul>
        </div>
-     </section>
+   </article>
     </div>
 </div>
 <?php include "../footer.php"; ?>
