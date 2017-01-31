@@ -1,8 +1,8 @@
 <?php include "../header.php"; ?>
-<nav>
-    <h1>Gestion Commentaires</h1>
-</nav>
 
+<div id="page_title">
+    <h6>Gestion des utilisateurs</h6>
+</div>
 <form action="archive.php" method="POST">
     <button type="submit" class="btn">Archives</button>
 </form>

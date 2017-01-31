@@ -1,24 +1,26 @@
 <?php include "header.php";
 ?>
 
-    <nav>
-        <h1>Mini-blog</h1>
-    </nav>
-    <section>
+
+    <article>
         <a class="lien fade" href="index.php"><button type="button" class='btn'>Accueil</button></a><br>
         <?php
         $id = $_GET['id'];
         $res = $bdd->prepare("SELECT * FROM mb_article WHERE id_article = :id");
         $res->execute(array(':id' => $id));
         $result = $res->fetch(PDO::FETCH_OBJ);
+        $id_auteur=$result->fk_id_user;
+        $res1 = $bdd->query("SELECT username FROM mb_users WHERE id_user='".$id_auteur."'");
+        $res1->execute();
+        $result1 = $res1->fetch(PDO::FETCH_OBJ);
         ?>
         <H1><?php echo $result->title;?></H1>
-        <H6><?php echo $result->date;?></H6>
+        <strong><?php echo "Posté par ".$result1->username." le ".$result->date;?></strong>
         <p><?php echo $result->content;?></p>
-    </section>
+    </article>
 
 
-<section>
+<article>
 	<h2 id="article-coms">Commentaires</h2>
 	<!-- Listing des commentaires -->
 	<?php
@@ -37,9 +39,9 @@
 				$res->execute(array(':id_user' => $com->fk_id_user));
 				$user = $res->fetch(PDO::FETCH_OBJ);
 				// Afficher le commentaire
-				echo "<strong>".$user->username." a dit</strong> <i>(le ".$com->date.")</i>:".$com->content."<br>";
+				echo "<p><strong>".$user->username." a dit</strong> <i>(le ".$com->date.")</i>:".$com->content."</p>";
 			} else {
-				echo "<strong>Anonyme a dit</strong> <i>(le ".$com->date.")</i>:".$com->content."<br>";
+				echo "<p><strong>Anonyme a dit</strong> <i>(le ".$com->date.")</i>:".$com->content."</p>";
 			}
 		}
 	}
@@ -51,6 +53,6 @@
 		<input type="hidden" name="idArticle" value="<?php echo $id; ?>">
 		<input type="submit" name="submit" value="Envoyer">
 	</form>
-</section>
+</article>
 
 <?php include "footer.php"; ?>

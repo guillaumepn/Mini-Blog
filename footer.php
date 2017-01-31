@@ -1,7 +1,7 @@
-
+</section>
 <footer>
 	<?php
-	$refererUrl = $_SERVER['HTTP_REFERER'];
+	$refererUrl = $_SERVER['REQUEST_URI'];
 
 	if (!isset($auth)) $auth = new Authentification();
 	// Si on est déjà dans l'admin, on ne veut pas afficher ce lien dans le footer
@@ -12,7 +12,9 @@
 
 		if ($user->admin == 1) {
 			?>
-			<a href="./admin/index.php">Administration</a>
+
+			<p><a href="./admin/index.php">Administration</a></p>
+
 			<?php
 		}
 	}
