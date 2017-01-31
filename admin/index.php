@@ -26,6 +26,12 @@
                    <p>Articles</p>
                 </a>
              </li>
+              <li class="category">
+                  <a href="user.php">
+                      <img src='../public/account.png' alt="">
+                      <p>Utilisateurs</p>
+                  </a>
+              </li>
           </ul>
        </div>
      </section>

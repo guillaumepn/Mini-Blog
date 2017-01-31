@@ -38,7 +38,7 @@ if($urlToCheck == 'article.php'){
         <?php
          }  ?>
 <?php } elseif ($urlToCheck == 'comments.php'){
-?> <p> Liste des commentaires </p>
+    ?> <p> Liste des commentaires </p>
     <?php $req = $bdd->query('select * from mb_comments where status = -1');
     while($row=$req->fetch(PDO::FETCH_OBJ)) {?>
         <tr align="center">
@@ -64,6 +64,33 @@ if($urlToCheck == 'article.php'){
 
 
     <?php
+}elseif ($urlToCheck == 'user.php'){
+?> <p> Liste des utilisateurs </p>
+            <?php $req = $bdd->query('select * from mb_users where status = -1');
+            while($row=$req->fetch(PDO::FETCH_OBJ)) {?>
+                <tr align="center">
+                    <td><?= $row->username ?></td>
+                    <td><?php
+                        if($row->status==-1):
+                            ?>
+
+                            <form action="updateStatus.php" method="post" style="display: inline-block">
+                                <input type="hidden" name="id_user" value="<?= $row->id_user ?>">
+                                <input type="hidden" name="status" value="<?= $row->status ?>">
+                                <button type="submit" name ="toto" id="toto" onClick="if (!confirm('Voulez vous mettre en ligne cet utilisateur ?')) return false;"><h5>Mettre en ligne</h5></button>
+                            </form>
+
+                            <?php
+                        endif;
+                        ?>
+                    </td>
+
+                </tr>
+                <?php
+            }  ?>
+
+
+            <?php
 }else{ echo "Error 404";}
 ?>
             </tbody>

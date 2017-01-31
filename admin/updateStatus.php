@@ -42,6 +42,26 @@ if($_POST['id_article']){
     else {
         header('Location: ../404.php');
     }
+}elseif($_POST['id_user']){
+    if ($_POST['status']==1) {
+        $sql = $bdd->query("UPDATE mb_users SET `status`= -1 WHERE `id_user` = '" . $_POST['id_user'] . "'");
+    }elseif ($_POST['status']== '-1'){
+        $sql = $bdd->query("UPDATE mb_users SET `status`= 1 WHERE `id_user` = '" . $_POST['id_user'] . "'");
+    }
+    $refererUrl = $_SERVER['HTTP_REFERER'];
+    $Exploded_URL = explode("/",$refererUrl);
+    $urlToCheck = $Exploded_URL[6];
+
+    if(($sql)){
+        if($urlToCheck=="archive.php"){
+            header('Location: index.php');
+        }else{
+            header('Location: '.$urlToCheck);
+        }
+    }
+    else {
+        header('Location: ../404.php');
+    }
 }
 ?>
 
