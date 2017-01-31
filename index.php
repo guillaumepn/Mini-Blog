@@ -1,11 +1,5 @@
 
-<?php include "header.php"; ?>
-<nav>
-	<h1>Mini-blog</h1>
-</nav>
-<section>
-
-	<?php
+<?php include "header.php";
 		$auth = new Authentification();
 		$auth->inscription();
 		$auth->connection();
@@ -29,11 +23,11 @@
 				$req->execute(array(':idArticle' => $article->id_article));
 				$coms = $req->fetch(PDO::FETCH_OBJ);
                 echo "<p><a href=\"article.php?id=".$article->id_article."\">".$article->title."</a>, écrit par ".$author->username." le ".$article->date."
-				<br><a href=\"article.php?id=".$article->id_article."#article-coms\">".$coms->nb." commentaire(s)</a></p>";
+				 <a href=\"article.php?id=".$article->id_article."#article-coms\" ><i class=\"fa fa-comments-o\" aria-hidden=\"true\"></i> ".$coms->nb."</a></p>";
             }
         }
      ?>
-</section>
+
 
 
 <?php include "footer.php"; ?>

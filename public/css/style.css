@@ -1,3 +1,58 @@
-*{
-  background-color: white;
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
+
+
+html{
+    position: relative;
+    min-height: 100%;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    text-align: center;
+    background-image: url(../image/header-bg.jpg);
+    height: 200px;
+    line-height: 100px;
+    box-shadow: 0 0px 5px #ecf0f1 inset;
+}
+
+nav h1 {
+    margin: 0;
+    font-size: 40px;
+    color: #ecf0f1;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    text-shadow: 0 0 5px #ecf0f1;
+}
+
+.container {
+    margin: 20px 20px 100px 20px;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: #ecf0f1;
+    text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+}
+
+a {
+    color: #2980b9;
+    text-decoration: none;
 }
