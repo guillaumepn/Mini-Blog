@@ -2,6 +2,7 @@
 include "../header.php";
 
 var_dump($_POST);
+$came=$_POST['came'];
 if($_POST['id_article']){
     if ($_POST['status']==1) {
         $sql = $bdd->query("UPDATE mb_article SET `status`= -1 WHERE `id_article` = '" . $_POST['id_article'] . "'");
@@ -13,7 +14,7 @@ if($_POST['id_article']){
 
     if(($sql)){
         if(strpos($refererUrl,"archive.php")){
-            header('Location: index.php');
+            header('Location: '.$came);
         }elseif(strpos($refererUrl,"article.php")){
         header('Location: article.php');
 
@@ -33,7 +34,7 @@ if($_POST['id_article']){
 
     if(($sql)){
         if(strpos($refererUrl,"archive.php")){
-            header('Location: index.php');
+            header('Location: '.$came);
         }elseif(strpos($refererUrl,"comments.php")){
             header('Location: comments.php');
         }
@@ -51,7 +52,7 @@ if($_POST['id_article']){
 
     if(($sql)){
         if(strpos($refererUrl,"archive.php")){
-            header('Location: index.php');
+            header('Location: '.$came);
         }elseif(strpos($refererUrl,"user.php")){
             header('Location: user.php');
 
