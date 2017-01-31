@@ -1,7 +1,9 @@
 <?php
 session_start();
 
-$bdd = new PDO('mysql:host=localhost;dbname=mini_blog;charset=utf8', 'root', '');
+require_once 'conf.inc.php';
+
+$bdd = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PWD);
 
 require_once("classAuthentification.php");
 ?>
@@ -11,7 +13,7 @@ require_once("classAuthentification.php");
 <head>
 	<meta charset="UTF-8">
 	<title>Mini-Blog</title>
-
+	<link rel="stylesheet" href=<?php echo CSS_PATH; ?>>
 	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
      <script type="text/javascript">
 tinymce.init({
