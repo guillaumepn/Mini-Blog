@@ -1,5 +1,7 @@
 <?php
 
+require_once 'conf.inc.php';
+
 class Authentification
 {
 
@@ -9,7 +11,7 @@ class Authentification
 
   function inscription(){
     if(isset($_POST['pseudo']) && $_POST['pseudo']!=""){
-      $bdd = new PDO('mysql:host=localhost;dbname=mini_blog;charset=utf8', 'root', '');
+      $bdd = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PWD);
       $statement = $bdd->prepare("SELECT username FROM mb_users WHERE username = :username");
       $statement->execute(array(':username' => $_POST['pseudo'] ));
       $alreadyUsed = $statement->fetchAll();
@@ -43,7 +45,7 @@ class Authentification
 
     if($this->isConnected()){return 0;}
     if(isset($_POST['co_pseudo']) && $_POST['co_pseudo']!=""){
-      $bdd = new PDO('mysql:host=localhost;dbname=mini_blog;charset=utf8', 'root', '');
+      $bdd = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PWD);
       $statement = $bdd->prepare("SELECT username, password FROM mb_users WHERE username = :username");
       $statement->execute(array(':username' => $_POST['co_pseudo'] ));
       $userSpec = $statement->fetchAll();
