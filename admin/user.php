@@ -10,6 +10,7 @@
     <thead>
     <tr align="center">
         <td width="25%"><strong>Utilisateur</strong></td>
+        <td width="25%"><strong>Role</strong></td>
         <td width="25%"><strong>Mise en ligne</strong></td>
     </tr>
     </thead>
@@ -21,6 +22,22 @@
         if($row->status==1){?>
             <tr align="center">
                 <td><?= $row->username ?></td>
+                <td>
+
+
+                    <form action="updateAdmin.php" method="post" style="display: inline-block">
+                        <input type="hidden" name="id_user" value="<?= $row->id_user ?>">
+                        <input type="hidden" name="admin" value="<?= $row->admin ?>">
+                        <button type="submit" name="toto" id="toto" onClick="if (!confirm('Voulez vous modifier le role de cet utilisateur?')) return false;">
+                            <?php if ($row->admin == 0){ ?>
+                            <h5>Rendre Administrateur</h5>
+                            <?php }elseif($row->admin == 1){ ?>
+                             <h5>Rendre Utilisateur</h5>
+                            <?php } ?>
+                        </button>
+                    </form>
+
+                </td>
                 <td>
 
 
