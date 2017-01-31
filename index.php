@@ -7,8 +7,21 @@
 
 	<?php
 		$auth = new Authentification();
-		$auth->inscription();
-		$auth->connection();
+		if($auth->isConnected() == true){
+			?>
+			<form class="deconnexion" action="index.php" method="post">
+				<input type="submit" name="deconnexion" value="Deconnexion">
+			</form>
+			<?php
+			if(isset($_POST["deconnexion"]) && $_POST["deconnexion"] == "Deconnexion" ){
+				unset($_POST["deconnexion"]);
+				session_destroy();
+				header("Refresh:0");
+			}
+		}else{
+			$auth->inscription();
+			$auth->connection();
+		}
 	 ?>
 
 	<h2>Liste des articles</h2>
