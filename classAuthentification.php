@@ -33,12 +33,15 @@ class Authentification
     }
     ?>
 
-    <form class="" action="index.php" method="post">
-      <input type="text" name="pseudo" pattern="[A-Za-z0-9]{2-15}" required="true" value="" placeholder="Pseudo">
-      <input type="password" pattern="[A-Za-z0-9]{8-*}" name="password" required="true" value="" placeholder="Password">
-      <input type="password" pattern="[A-Za-z0-9]{8-*}" name="passwordVerification" required="true" value="" placeholder="Verify password">
-      <input type="submit" name="submit" >
-    </form>
+    <div class="form subscribe">
+        <p>S'inscrire</p>
+        <form class="" action="index.php" method="post">
+          <input type="text" name="pseudo" pattern="[A-Za-z0-9]{2-15}" required="true" value="" placeholder="Pseudo">
+          <input type="password" pattern="[A-Za-z0-9]{8-*}" name="password" required="true" value="" placeholder="Password">
+          <input type="password" pattern="[A-Za-z0-9]{8-*}" name="passwordVerification" required="true" value="" placeholder="Verify password">
+          <input type="submit" name="submit" >
+        </form>
+    </div>
     <?php
 
   }
@@ -66,11 +69,14 @@ class Authentification
     }
 
     ?>
-    <form class="" action="index.php" method="post">
-      <input type="text" name="co_pseudo" pattern="[A-Za-z0-9]{2-15}" required="true" value="" placeholder="Pseudo">
-      <input type="password" pattern="[A-Za-z0-9]{8-*}" name="co_password" required="true" value="" placeholder="Password">
-      <input type="submit" name="submit" >
-    </form>
+    <div class="form login">
+        <p>Se connecter</p>
+        <form class="" action="index.php" method="post">
+          <input type="text" name="co_pseudo" pattern="[A-Za-z0-9]{2-15}" required="true" value="" placeholder="Pseudo">
+          <input type="password" pattern="[A-Za-z0-9]{8-*}" name="co_password" required="true" value="" placeholder="Password">
+          <input type="submit" name="submit" >
+        </form>
+    </div>
     <?php
   }
 
