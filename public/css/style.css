@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto');
 
 
@@ -55,4 +56,88 @@ p {
 a {
     color: #2980b9;
     text-decoration: none;
+}
+  
+#page_title{
+  font-size: 100px;
+  color: #fff;
+  padding-top: 50px;
+  margin-bottom: -90px;
+}
+
+
+#page_title h6{
+  margin-top: 2%;
+  color:#002F2F;
+  font-size: 30%;
+  text-align: center;
+
+}
+.category {
+  width: 27%;
+  display: inline-block;
+  margin-left: 5%;
+  margin-bottom: 10%;
+  position: relative;
+}
+
+.category p {
+  position: absolute;
+  top: 100%;
+  background-color: #efeaee;
+  color: #002F2F;
+  opacity: 0.9;
+  text-align: center;
+  width: 180px;
+  height: 66px;
+  border-radius: 4px;
+  margin: 0px 0px;
+}
+
+
+.category img{
+  height: 150px;
+  width: 180px;
+
+}
+.category img:hover{
+
+  opacity:0.5;
+}
+.category p:hover{
+  opacity:0.8;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+}
+
+thead{
+  background-color: rgba(0, 0, 0, 0.28);
+  color: white;
+}
+
+button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.28);
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  transition: all 0.5s;
+  width:100px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+
+button:hover {
+  opacity: 0.6;
+  right: 0;
 }

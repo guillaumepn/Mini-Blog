@@ -1,6 +1,13 @@
 <?php include "../header.php"; ?>
 
+
 <article>
+
+    <div id="page_title">
+        <h6>Gestion des articles</h6>
+    </div>
+
+
 	<div class="section admin">
 
 

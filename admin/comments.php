@@ -1,8 +1,9 @@
 <?php include "../header.php"; ?>
 
-<h1>Gestion Commentaires</h1>
 
-
+<div id="page_title">
+    <h6>Gestion des commentaires</h6>
+</div>
   <form action="archive.php" method="POST">
         <button type="submit" class="btn">Archives</button>
     </form>

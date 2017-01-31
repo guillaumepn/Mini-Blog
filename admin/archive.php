@@ -1,6 +1,9 @@
 <?php include "../header.php"; ?>
 <div class="section admin">
-    <h2>Archives</h2>
+
+    <div id="page_title">
+        <h6>Archives</h6>
+    </div>
 
     <table width="100%" align="center" cellpadding="0" cellspacing="1" border="1">
             <thead>
@@ -26,6 +29,7 @@ if(strpos($refererUrl,"article.php")){
 
                 <form action="updateStatus.php" method="post" style="display: inline-block">
                     <input type="hidden" name="id_article" value="<?= $row->id_article ?>">
+                    <input type="hidden" name="came" value="article.php">
                     <input type="hidden" name="status" value="<?= $row->status ?>">
                     <button type="submit" name ="toto" id="toto" onClick="if (!confirm('Voulez vous mettre en ligne cette article : <?= $row->title ?> ?')) return false;"><h5>Mettre en ligne</h5></button>
                 </form>
@@ -52,6 +56,7 @@ if(strpos($refererUrl,"article.php")){
 
                     <form action="updateStatus.php" method="post" style="display: inline-block">
                         <input type="hidden" name="id_comment" value="<?= $row->id_comment ?>">
+                        <input type="hidden" name="came" value="comments.php">
                         <input type="hidden" name="status" value="<?= $row->status ?>">
                         <button type="submit" name ="toto" id="toto" onClick="if (!confirm('Voulez vous mettre en ligne ce commentaire ?')) return false;"><h5>Mettre en ligne</h5></button>
                     </form>
@@ -79,6 +84,7 @@ if(strpos($refererUrl,"article.php")){
 
                             <form action="updateStatus.php" method="post" style="display: inline-block">
                                 <input type="hidden" name="id_user" value="<?= $row->id_user ?>">
+                                <input type="hidden" name="came" value="user.php">
                                 <input type="hidden" name="status" value="<?= $row->status ?>">
                                 <button type="submit" name ="toto" id="toto" onClick="if (!confirm('Voulez vous mettre en ligne cet utilisateur ?')) return false;"><h5>Mettre en ligne</h5></button>
                             </form>
