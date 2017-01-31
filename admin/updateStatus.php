@@ -9,14 +9,14 @@ if($_POST['id_article']){
         $sql = $bdd->query("UPDATE mb_article SET `status`= 1 WHERE `id_article` = '" . $_POST['id_article'] . "'");
     }
     $refererUrl = $_SERVER['HTTP_REFERER'];
-    $Exploded_URL = explode("/",$refererUrl);
-    $urlToCheck = $Exploded_URL[6];
+    // $Exploded_URL = explode("/",$refererUrl);
+    // $urlToCheck = $Exploded_URL[5];
 
     if(($sql)){
-        if($urlToCheck=="archive.php"){
+        if(strpos($refererUrl, "archive.php")){
             header('Location: index.php');
         }else{
-        header('Location: '.$urlToCheck);
+        header('Location: archive.php');
         }
     }
     else {
@@ -29,14 +29,14 @@ if($_POST['id_article']){
         $sql = $bdd->query("UPDATE mb_comments SET `status`= 1 WHERE `id_comment` = '" . $_POST['id_comment'] . "'");
     }
     $refererUrl = $_SERVER['HTTP_REFERER'];
-    $Exploded_URL = explode("/",$refererUrl);
-    $urlToCheck = $Exploded_URL[6];
+    // $Exploded_URL = explode("/",$refererUrl);
+    // $urlToCheck = $Exploded_URL[6];
 
     if(($sql)){
-        if($urlToCheck=="archive.php"){
+        if(strpos($refererUrl, "archive.php")){
             header('Location: index.php');
         }else{
-            header('Location: '.$urlToCheck);
+            header('Location: archive.php');
         }
     }
     else {
@@ -44,4 +44,3 @@ if($_POST['id_article']){
     }
 }
 ?>
-

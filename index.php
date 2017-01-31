@@ -20,12 +20,29 @@
             echo "Aucun article.";
         } else {
 
-            foreach ($req as $article) {
+            foreach ($articles as $article) {
 
-                    echo '<form action="article.php" method="POST">';
-                    echo "<input type='hidden' name='id' value=".$article['id_article']."";
-                    echo "<a><button type='submit'>".$article['title']."</button></a></a>";
-                    echo "<br></form>";
+				$res = $bdd->prepare("SELECT * FROM mb_users WHERE id_user = :id_user");
+				$res->execute(array(':id_user' => $article->fk_id_user));
+				$user = $res->fetch(PDO::FETCH_OBJ);
+
+				// Lien : titre de l'article
+                echo '<form action="article.php" method="POST">';
+                echo "<input type='hidden' name='id' value=".$article->id_article.">";
+                echo "<button type='submit'>".$article->title."</button> posté par ".$user->username." le ".$article->date;
+                echo "</form>";
+
+				$res = $bdd->prepare("SELECT count(*) AS nb FROM mb_comments WHERE fk_id_article = :idArticle");
+				$res->execute(array(':idArticle' => $article->id_article));
+				$coms = $res->fetch(PDO::FETCH_OBJ);
+
+				// Lien : nombre de commentaires
+				echo '<form action="article.php#article-coms" method="POST">';
+                echo "<input type='hidden' name='id' value=".$article->id_article.">";
+                echo "<button type='submit'>".$coms->nb." commentaires</button>";
+                echo "</form>";
+
+
                 //echo "<p><a href=\"article.php?id=".$article['id_article']."\">".$article['title']."</a></p>";
 
             }

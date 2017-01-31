@@ -9,11 +9,12 @@
                     <td>Actions</td>
                 </tr>
             </thead>
-            <tbody> <?php $refererUrl = $_SERVER['HTTP_REFERER'];
-            $Exploded_URL = explode("/",$refererUrl);
-$urlToCheck = $Exploded_URL[6];//A modifier selon votre URL
+            <tbody> <?php
+            $refererUrl = $_SERVER['HTTP_REFERER'];
+            // $Exploded_URL = explode("/",$refererUrl);
+            // $urlToCheck = $Exploded_URL[5];//A modifier selon votre URL
 
-if($urlToCheck == 'article.php'){
+if(strpos($refererUrl, "article.php")){
 ?> <p> Liste des articles </p>
     <?php $req = $bdd->query('select * from mb_article where status = -1');
     while($row=$req->fetch(PDO::FETCH_OBJ)) {?>
@@ -37,7 +38,7 @@ if($urlToCheck == 'article.php'){
         </tr>
         <?php
          }  ?>
-<?php } elseif ($urlToCheck == 'comments.php'){
+<?php } elseif (strpos($refererUrl, "comments.php")){
 ?> <p> Liste des commentaires </p>
     <?php $req = $bdd->query('select * from mb_comments where status = -1');
     while($row=$req->fetch(PDO::FETCH_OBJ)) {?>
