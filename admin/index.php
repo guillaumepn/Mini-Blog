@@ -4,9 +4,7 @@
   <h1>Mini-Blog</h1>
 </nav>
 <div id="page_title">
-   <center>
       <h6>Administration</h6>
-   </center>
 </div>
 <a href="../index.php">
                    <button type="submit">Deconnexion</button>

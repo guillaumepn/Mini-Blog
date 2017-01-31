@@ -1,6 +1,9 @@
 <?php include "../header.php"; ?>
 <div class="section admin">
-    <h2>Archives</h2>
+
+    <div id="page_title">
+        <h6>Archives</h6>
+    </div>
 
     <table width="100%" align="center" cellpadding="0" cellspacing="1" border="1">
             <thead>

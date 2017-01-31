@@ -1,7 +1,8 @@
 <?php include "../header.php"; ?>
-<nav>
-	<h1>Gestion Articles</h1>
-</nav>
+
+    <div id="page_title">
+        <h6>Gestion des articles</h6>
+    </div>
 <section>
 	<div class="section admin">
 
